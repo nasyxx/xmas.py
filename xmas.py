@@ -29,33 +29,39 @@ Excited without bugs::
 
 * author: Nasy
 * date: Dec 22, 2017
-* email: sy_n@me.com
+* update: Dec 22, 2018
+* email: nasyxx@gmail.com
 * file: xmasx.py
-* license: MIT
+* license: GPL-3.0+
 
 A cat, sitting on a wall, near a Xmas tree, is gazing starry picturesque night.
 
-Copyright © 2017 by Nasy. All Rights Reserved.
+Copyright © 2018 by Nasy. All Rights Reserved.
 """
+# Standard Library
+import sys
 import random
 from typing import Tuple
 
-COLORS = (
-    'black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white'
-)
+COLORS = ("black", "red", "green", "yellow", "blue", "magenta", "cyan", "white")
 
 
 def colorprint(string: str, color: str = "", blink: bool = False) -> str:
     """Print twinkle and colorful string."""
     if not color:
         color = random.choice(COLORS)
-    return "\x1b[" + ";".join([
-        str(30 + COLORS.index(color)), "5" if blink else ""
-    ]) + "m" + str(string) + "\x1b[0m"
+    return (
+        "\x1b["
+        + ";".join([str(30 + COLORS.index(color)), "5" if blink else ""])
+        + "m"
+        + str(string)
+        + "\x1b[0m"
+    )
 
 
-def star(x: str, density: float = 0, marker: Tuple[str, str] = (".",
-                                                                "*")) -> str:
+def star(
+    x: str, density: float = 0, marker: Tuple[str, str] = (".", "*")
+) -> str:
     """Generate a star."""
     if not density:
         density = random.random() / 10
@@ -70,25 +76,27 @@ def star(x: str, density: float = 0, marker: Tuple[str, str] = (".",
 def translate(x: str) -> str:
     """Translate a string to a twinkle colorful string."""
     if x == ".":
-        x = colorprint(x, "", True if random.random() < 0.2 else False)
+        return colorprint(x, "", True if random.random() < 0.2 else False)
     elif x == "*":
-        x = colorprint(x, "", True if random.random() < 0.1 else False)
+        return colorprint(x, "", True if random.random() < 0.1 else False)
     elif x in {"@", "&"}:
-        x = colorprint(
-            x, random.choice(("cyan", "blue")), True
-            if random.random() < 0.1 else False
+        return colorprint(
+            x,
+            random.choice(("cyan", "blue")),
+            True if random.random() < 0.1 else False,
         )
     elif x in {",", "`", ";", "'", "#", "⁂"}:
-        x = colorprint(x, "", True if random.random() < 0.05 else False)
+        return colorprint(x, "", True if random.random() < 0.05 else False)
     elif x in {"/", "\\", "^", "|", "_"}:
-        x = colorprint(x, "green", False)
+        return colorprint(x, "green", False)
     elif x == "★":
-        x = colorprint(x, "yellow", False)
+        return colorprint(x, "yellow", False)
     return x
 
 
 def main() -> None:
     """Yooo, here is the main function."""
+    name = sys.argv[1].upper() if len(sys.argv) > 1 else "NASY"
     cat = ["| "] * 21 + [
         "|   .     |\\___/|   ",
         "|     .   )    -(   ",
@@ -97,7 +105,7 @@ def main() -> None:
         "|      *  /   - \\   ",
         "|    .    |-    |   ",
         "|        /   -   \\  ",
-        "| NASY___\\__( (__/__",
+        f"| {name[:6]:_<6}_\\__( (__/__",
         "| ______|____) )|___",
         "| ___|______( (_____",
         "|_______|____\\_|____",
@@ -159,7 +167,7 @@ def main() -> None:
                     continue
                 nt.append(star(c))
             tree[i] = "".join(map(translate, nt))
-        print(tree[i] + colorprint("|", "green"), sep = "\n")
+        print(tree[i] + colorprint("|", "green"), sep="\n")
 
 
 if __name__ == "__main__":

@@ -1,5 +1,5 @@
 #+TITLE: README
-#+DATE: <2017-12-22 Fri>
+#+DATE: <2018-12-22 Sat>
 #+AUTHOR: Nasy
 #+EMAIL: nasyxx@gmail.com
 
@@ -9,6 +9,4 @@ Hope you can have such a pleasant night, just as the cat sat on the wall near th
 
 [[./sshot.png]]
 
-Here is the link to the visual effect of this file.
-
-[[https://youtu.be/2nBZjMPUcV4]]
+[[./xmas.svg]]

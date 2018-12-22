@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "xmas"
+version = "2018"
+description = "A cat, sitting on a wall, near a Xmas tree, is gazing starry picturesque night."
+authors = ["Nasy <nasyxx+git@gmail.com>"]
+license = "GPL-3.0+"
+
+[tool.poetry.dependencies]
+python = "^3.7"
+
+[tool.poetry.dev-dependencies]
+
+[tool.poetry.scripts]
+xmas = "xmas:main"
+
+[tool.black]
+line-length = 79
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
