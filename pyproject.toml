@@ -5,7 +5,7 @@ description = "A cat, sitting on a wall, near a Xmas tree, is gazing starry pict
 authors = ["Nasy <nasyxx+git@gmail.com>"]
 license = "GPL-3.0+"
 readme = "README.md"
-include = ["poetry.lock", "xmas.svg", "sshot.png"]
+include = ["poetry.lock", "xmas.cast"]
 
 [tool.poetry.dependencies]
 python = "^3.7"
