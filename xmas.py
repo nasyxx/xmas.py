@@ -76,17 +76,13 @@ def star(
 def translate(x: str) -> str:
     """Translate a string to a twinkle colorful string."""
     if x == ".":
-        return colorprint(x, "", True if random.random() < 0.2 else False)
+        return colorprint(x, "", random.random() < 0.2)
     elif x == "*":
-        return colorprint(x, "", True if random.random() < 0.1 else False)
+        return colorprint(x, "", random.random() < 0.1)
     elif x in {"@", "&"}:
-        return colorprint(
-            x,
-            random.choice(("cyan", "blue")),
-            True if random.random() < 0.1 else False,
-        )
+        return colorprint(x, random.choice(("cyan", "blue")), random.random() < 0.1)
     elif x in {",", "`", ";", "'", "#", "⁂"}:
-        return colorprint(x, "", True if random.random() < 0.05 else False)
+        return colorprint(x, "", random.random() < 0.05)
     elif x in {"/", "\\", "^", "|", "_"}:
         return colorprint(x, "green", False)
     elif x == "★":
