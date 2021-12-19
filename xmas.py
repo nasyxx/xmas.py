@@ -180,6 +180,6 @@ def main() -> None:
 
 if __name__ == "__main__":
     if "-v" in sys.argv:
-        print("2021.1 -- https://github.com/nasyxx/xmas.py -- Nasy")
+        print("2021.2 -- https://github.com/nasyxx/xmas.py -- Nasy")
     else:
         main()

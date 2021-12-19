@@ -1,7 +1,7 @@
 # [tool.poetry]
 [project]
 name = "xmas"
-version = "2021.1"
+version = "2021.2"
 description = ""
 authors = [
     {name = "Nasy", email = "nasyxx+git@gmail.com"},
@@ -20,7 +20,7 @@ xmas = "xmas:main"
 line-length = 79
 
 [tool.pdm]
-includes = []
+includes = ["README.md"]
 [tool.pdm.dev-dependencies]
 dev = []
 [build-system]
