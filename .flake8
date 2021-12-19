@@ -1,0 +1,68 @@
+[flake8]
+show-source = true
+
+ignore =
+    C812,
+    DAR101,
+    DAR201,
+    DAR301,
+
+    E111,
+
+    E133,
+    E203,
+    E265,
+    E800,
+    EXE001,
+    F841,
+    Q000,
+    RST219,
+    RST299,
+    RST305,
+    S322,
+    S404,
+    S603,
+    S607,
+    SC100,
+    SC200,
+    W503,
+    WPS111,
+    WPS120,
+    WPS237,
+    WPS305,
+    WPS306,
+    WPS316,
+    WPS326,
+    WPS332,
+    WPS337,
+    WPS348,
+    WPS352,
+    WPS404,
+    WPS407,
+    WPS414,
+    WPS421,
+    WPS426,
+    WPS430,
+    WPS437,
+    WPS440,
+    WPS441,
+    WPS453,
+    WPS462,
+    Z115,
+
+doctests = True
+
+max-annotation-complexity = 5
+max-complexity = 15
+max-doc-length = 70
+max-expressions = 15
+max-import-from-members = 20
+max-imports = 50
+max-line-complexity = 20
+max-line-length = 79
+max-local-variables = 20
+max-module-members = 50
+
+inline-quotes = double
+
+dictionaries=en_US,python,technical,django

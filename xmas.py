@@ -1,20 +1,19 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-r"""
-Life's pathetic, have fun ("▔□▔)/hi~♡ Nasy.
 
-Excited without bugs::
+r"""
+Python ♡ Nasy.
 
     |             *         *
     |                  .                .
-    |           .
+    |           .                              登
     |     *                      ,
-    |                   .
+    |                   .                      至
     |
-    |                               *
+    |                               *          恖
     |          |\___/|
-    |          )    -(             .              '
-    |         =\  -  /=
+    |          )    -(             .           聖 ·
+    |         =\ -   /=
     |           )===(       *
     |          /   - \
     |          |-    |
@@ -27,49 +26,58 @@ Excited without bugs::
     |  ______|______|______|______|______|______|_
     |  ___|______|______|______|______|______|____
 
-* author: Nasy
-* date: Dec 22, 2017
-* update: Dec 22, 2018
-* email: nasyxx@gmail.com
-* file: xmasx.py
-* license: GPL-3.0+
+author   : Nasy https://nasy.moe
+date     : Dec 22, 2017
+update   : Dec 19, 2021
+email    : Nasy <nasyxx+python@gmail.com>
+filename : xmas.py
+project  : xmas.py
+license  : GPL-3.0+
+url      : https://github.com/nasyxx/xmas.py
 
-A cat, sitting on a wall, near a Xmas tree, is gazing starry picturesque night.
-
-Copyright © 2018 by Nasy. All Rights Reserved.
+A cat, sitting on a wall, near a Xmas tree, is gazing starry
+picturesque night.
 """
 # Standard Library
-import sys
 import random
+import sys
+
+# Types
 from typing import Tuple
 
-COLORS = ("black", "red", "green", "yellow", "blue", "magenta", "cyan", "white")
+COLORS = (
+    "black",
+    "red",
+    "green",
+    "yellow",
+    "blue",
+    "magenta",
+    "cyan",
+    "white",
+)
+
+SNOW = {"❅", "❆"}
 
 
-def colorprint(string: str, color: str = "", blink: bool = False) -> str:
+def colorprint(string: str, color: str = None, blink: bool = False) -> str:
     """Print twinkle and colorful string."""
-    if not color:
-        color = random.choice(COLORS)
+    color = color or random.choice(COLORS)
     return (
-        "\x1b["
-        + ";".join([str(30 + COLORS.index(color)), "5" if blink else ""])
-        + "m"
-        + str(string)
-        + "\x1b[0m"
+        f"\x1b[{str(30 + COLORS.index(color))};"
+        f"{blink and 5 or ''}m{string}\x1b[0m"
     )
 
 
 def star(
-    x: str, density: float = 0, marker: Tuple[str, str] = (".", "*")
+    x: str, density: float = 0, markers: Tuple[str, ...] = (".", "*", *SNOW)
 ) -> str:
     """Generate a star."""
-    if not density:
-        density = random.random() / 10
+    density = density or random.random() / 10
     if x == " ":
         if random.random() < density:
-            return marker[0]
+            return markers[0]
         elif random.random() > (1 - density):
-            return marker[1]
+            return random.choice(markers[1:])
     return x
 
 
@@ -79,8 +87,12 @@ def translate(x: str) -> str:
         return colorprint(x, "", random.random() < 0.2)
     elif x == "*":
         return colorprint(x, "", random.random() < 0.1)
+    elif x in SNOW:
+        return colorprint(x, "white", False)
     elif x in {"@", "&"}:
-        return colorprint(x, random.choice(("cyan", "blue")), random.random() < 0.1)
+        return colorprint(
+            x, random.choice(("cyan", "blue")), random.random() < 0.1
+        )
     elif x in {",", "`", ";", "'", "#", "⁂"}:
         return colorprint(x, "", random.random() < 0.05)
     elif x in {"/", "\\", "^", "|", "_"}:
@@ -103,8 +115,8 @@ def main() -> None:
         "|        /   -   \\  ",
         f"| {name[:6]:_<6}_\\__( (__/__",
         "| ______|____) )|___",
-        "| ___|______( (_____",
-        "|_______|____\\_|____",
+        "| ___|______( /_____",
+        "|_______|____∀_|____",
     ]
     tree = [
         "",
@@ -159,7 +171,7 @@ def main() -> None:
                 elif c == "\\":
                     inside = False
                 if inside:
-                    nt.append(star(c, 0.05, ("#", "⁂")))
+                    nt.append(star(c, 0.05, ("#", "⁂", *SNOW)))
                     continue
                 nt.append(star(c))
             tree[i] = "".join(map(translate, nt))
@@ -167,4 +179,7 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    if "-v" in sys.argv:
+        print("2021.1 -- https://github.com/nasyxx/xmas.py -- Nasy")
+    else:
+        main()
