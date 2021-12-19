@@ -1,17 +1,29 @@
 # [tool.poetry]
 [project]
 name = "xmas"
-version = "2021.2"
-description = ""
+version = "2021.3"
+description = "A cat, sitting on a wall, near a Xmas tree, is gazing starry picturesque night."
 authors = [
     {name = "Nasy", email = "nasyxx+git@gmail.com"},
 ]
 dependencies = []
 requires-python = ">=3.7,<4.0"
-license = {text = "GPL-3+"}
+license = {text = "GPLv3+"}
+readme = "README.md"
+
+classifiers = [
+    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+]
+
 
 [project.urls]
 homepage = "https://github.com/nasyxx/xmas.py"
+Repository = "https://github.com/nasyxx/xmas.py"
 
 [project.scripts]
 xmas = "xmas:main"
@@ -20,7 +32,7 @@ xmas = "xmas:main"
 line-length = 79
 
 [tool.pdm]
-includes = ["README.md"]
+includes = []
 [tool.pdm.dev-dependencies]
 dev = []
 [build-system]
