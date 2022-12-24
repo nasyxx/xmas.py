@@ -1,23 +1,23 @@
 # [tool.poetry]
 [project]
 name = "xmas"
-version = "2021.3"
+version = "2022.1"
 description = "A cat, sitting on a wall, near a Xmas tree, is gazing starry picturesque night."
 authors = [
     {name = "Nasy", email = "nasyxx+git@gmail.com"},
 ]
 dependencies = []
-requires-python = ">=3.7,<4.0"
+requires-python = ">=3.8,<4.0"
 license = {text = "GPLv3+"}
 readme = "README.md"
 
 classifiers = [
     "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.7",
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
 ]
 
 

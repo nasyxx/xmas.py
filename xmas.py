@@ -28,7 +28,7 @@ Python ♡ Nasy.
 
 author   : Nasy https://nasy.moe
 date     : Dec 22, 2017
-update   : Dec 19, 2021
+update   : Dec 24, 2022
 email    : Nasy <nasyxx+python@gmail.com>
 filename : xmas.py
 project  : xmas.py
@@ -38,12 +38,15 @@ url      : https://github.com/nasyxx/xmas.py
 A cat, sitting on a wall, near a Xmas tree, is gazing starry
 picturesque night.
 """
+__version__ = "2022.1"
+
 # Standard Library
 import random
 import sys
 
 # Types
-from typing import Tuple
+from typing import Tuple, Optional
+from unicodedata import east_asian_width as ew
 
 COLORS = (
     "black",
@@ -59,7 +62,9 @@ COLORS = (
 SNOW = {"❅", "❆"}
 
 
-def colorprint(string: str, color: str = None, blink: bool = False) -> str:
+def colorprint(
+    string: str, color: Optional[str] = None, blink: bool = False
+) -> str:
     """Print twinkle and colorful string."""
     color = color or random.choice(COLORS)
     return (
@@ -105,6 +110,8 @@ def translate(x: str) -> str:
 def main() -> None:
     """Yooo, here is the main function."""
     name = sys.argv[1].upper() if len(sys.argv) > 1 else "NASY"
+    nl = sum(map(lambda r: r == "W" and 2 or 1, map(ew, name)))
+    mc = "MERRY CHRISTMAS "
     cat = ["| "] * 21 + [
         "|   .     |\\___/|   ",
         "|     .   )    -(   ",
@@ -113,7 +120,7 @@ def main() -> None:
         "|      *  /   - \\   ",
         "|    .    |-    |   ",
         "|        /   -   \\  ",
-        f"| {name[:6]:_<6}_\\__( (__/__",
+        "| _______\\__( (__/__",
         "| ______|____) )|___",
         "| ___|______( /_____",
         "|_______|____∀_|____",
@@ -148,13 +155,14 @@ def main() -> None:
         "@/  ,.;'`      ,.;'\\&",
         "@/,.;'       ,.;'    \\&",
         "////////////^\\\\\\\\\\\\\\\\\\\\\\\\",
-        "| |",
-        "| |",
+        "| |".center(53)[: -len(mc)] + mc,
+        "| |".center(53)[: -nl - 1] + f"{name} ",
         "|_|".center(53, "_"),
     ]
     print(colorprint("." + "_".center(72, "_") + ".", "green"))
     for i, (ct, e) in enumerate(zip(cat, tree)):
-        tree[i] = e.center(53)
+        if i < len(tree) - 2:
+            tree[i] = e.center(53)
         cat[i] = ct.ljust(20)
         if not e:
             tree[i] = "".join(map(translate, map(star, cat[i] + tree[i])))
@@ -180,6 +188,6 @@ def main() -> None:
 
 if __name__ == "__main__":
     if "-v" in sys.argv:
-        print("2021.2 -- https://github.com/nasyxx/xmas.py -- Nasy")
+        print("2022.1 -- https://github.com/nasyxx/xmas.py -- Nasy")
     else:
         main()
